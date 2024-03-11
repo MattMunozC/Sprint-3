@@ -1,10 +1,24 @@
 import random
 import re
 from pprint import pprint
+def validatePassword(password:str)->bool:
+    mayus="[A-Z]"
+    minus="[a-z]"
+    num="[0-9]"
+    if not bool(re.search(mayus,password)):
+        return False
+    if not bool(re.search(minus,password)):
+        return False
+    if not bool(re.search(num,password)):
+        return False
+    return True
 def createPassword(passlen:int)->str:
     letter="qwertyuiopasdfghjklñzxcvbnm"
     random_letter=lambda : random.choice([letter.upper()[random.randint(0,len(letter))-1],letter.lower()[random.randint(0,len(letter)-1)],str(random.randint(0,9))])
-    return "".join([random_letter() for i in range(passlen)])
+    while 1:
+        password="".join([random_letter() for i in range(passlen)])
+        if validatePassword(password):
+            return password
 def setUser(name:str)->dict:
     username=lambda name:"".join([name.split(" ")[0][:3:],name.split(" ")[1][:3:]])
     return {"username":username(name).replace("ñ","n").lower(),"name":name,"password":createPassword(8)}
