@@ -28,7 +28,8 @@ def validate_phone(phonenumber:int)->bool:
     if not phonenumber.isdigit():
         return False
     return True
-
+def createuser(names:list)->list:
+    return [setUser(user) for user in names]
 if __name__=="__main__":
     names = [
         "Sofía García",
@@ -42,9 +43,8 @@ if __name__=="__main__":
         "Valeria Ramírez",
         "Nicolás Torres"
     ]
-    users=[]
-    for user in names:
-        users.append(setUser(user))
+    users=createuser(names)
+
     for i in users:
         phonenumber=input(f"{i['username']}. Ingrese su numero de telefono: ")
         while not validate_phone(phonenumber):
