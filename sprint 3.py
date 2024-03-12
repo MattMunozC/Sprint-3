@@ -13,9 +13,16 @@ def validatePassword(password:str)->bool:
         return False
     return True
 def createPassword(passlen:int)->str:
+    #Variable que define el rango de caracteres permitidos
     letter="qwertyuiopasdfghjklñzxcvbnm"
+    #random letter es una funcion anonima que entrega una funcion de la lista utilizando random.choice
+    #opciones:
+    #   letter.upper() son los caracteres admisibles en mayuscula: será un caracter en la posicion aleatorio entre 0 y la longitud de letter con 1 paso de desfase
+    #   letter.upper() son los caracteres admisibles en minuscula: será un caracter en la posicion aleatorio entre 0 y la longitud de letter con 1 paso de desfase
+    #   un valor aleatorio entre 0 o 9
     random_letter=lambda : random.choice([letter.upper()[random.randint(0,len(letter))-1],letter.lower()[random.randint(0,len(letter)-1)],str(random.randint(0,9))])
     while 1:
+        #mientras la contraseña no sea valida, creara una nueva contraseña hasta encontrar una valida
         password="".join([random_letter() for i in range(passlen)])
         if validatePassword(password):
             return password
@@ -44,7 +51,6 @@ if __name__=="__main__":
         "Nicolás Torres"
     ]
     users=createuser(names)
-
     for i in users:
         phonenumber=input(f"{i['username']}. Ingrese su numero de telefono: ")
         while not validate_phone(phonenumber):
