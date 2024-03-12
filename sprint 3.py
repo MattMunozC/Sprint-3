@@ -36,6 +36,7 @@ def validate_phone(phonenumber:int)->bool:
         return False
     return True
 def createuser(names:list)->list:
+    #otorga un usuario a cada nombre
     return [setUser(user) for user in names]
 if __name__=="__main__":
     names = [
