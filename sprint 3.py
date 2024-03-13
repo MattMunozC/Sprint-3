@@ -1,6 +1,11 @@
 import random
 import re
 from pprint import pprint
+#Trabajo hecho por:
+#   Matias Muñoz 
+#   Sebastian Trejo
+#   Daniel Barrera
+#   Eduardo Muñoz
 def validatePassword(password:str)->bool:
     mayus="[A-Z]"
     minus="[a-z]"
