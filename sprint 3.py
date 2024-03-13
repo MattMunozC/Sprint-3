@@ -38,6 +38,9 @@ def validate_phone(phonenumber:int)->bool:
 def createuser(names:list)->list:
     #otorga un usuario a cada nombre
     return [setUser(user) for user in names]
+def openFile(name:str)->list:
+    with open(name,"r",encoding="UTF-8") as file:
+        return [line for line in file.read().split("\n")]
 if __name__=="__main__":
     names = [
         "Sofía García",
@@ -51,6 +54,8 @@ if __name__=="__main__":
         "Valeria Ramírez",
         "Nicolás Torres"
     ]
+    #si se quisiera hacer por archivos
+    #name=openFile("archivo.txt")
     users=createuser(names)
     for i in users:
         phonenumber=input(f"{i['username']}. Ingrese su numero de telefono: ")
